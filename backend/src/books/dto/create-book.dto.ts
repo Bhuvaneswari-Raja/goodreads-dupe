@@ -1,11 +1,11 @@
-import { IsString, IsOptional, IsInt, Min } from 'class-validator';
+import { IsInt, IsOptional, IsString, Min } from 'class-validator';
 
 export class CreateBookDto {
   @IsString()
-  title: string;
+  title!: string;
 
   @IsString()
-  author: string;
+  author!: string;
 
   @IsOptional()
   @IsInt()
@@ -24,8 +24,8 @@ export class CreateBookDto {
 export class UpdateProgressDto {
   @IsInt()
   @Min(0)
-  page: number;
+  page!: number;
 
   @IsString()
-  date: string;
+  date!: string;
 }

@@ -43,10 +43,10 @@ export class BooksService {
       book.pages > 0 && dto.page >= book.pages
         ? 'finished'
         : dto.page > 0
-        ? 'reading'
-        : 'unread';
+          ? 'reading'
+          : 'unread';
 
-    const [session, updatedBook] = await this.prisma.$transaction([
+    const [, updatedBook] = await this.prisma.$transaction([
       this.prisma.readingSession.create({
         data: { bookId: id, page: dto.page, date: dto.date },
       }),
