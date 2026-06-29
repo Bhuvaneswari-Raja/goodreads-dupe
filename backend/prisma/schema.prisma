@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Book {
+  id        Int              @id @default(autoincrement())
+  title     String
+  author    String
+  pages     Int              @default(0)
+  year      String?
+  cover     String?
+  current   Int              @default(0)
+  status    String           @default("unread")
+  createdAt DateTime         @default(now())
+  sessions  ReadingSession[]
+}
+
+model ReadingSession {
+  id        Int      @id @default(autoincrement())
+  bookId    Int
+  book      Book     @relation(fields: [bookId], references: [id])
+  page      Int
+  date      String
+  createdAt DateTime @default(now())
+}
+
+model Movie {
+  id        Int      @id @default(autoincrement())
+  tmdbId    Int      @unique
+  title     String
+  year      String?
+  cover     String?
+  status    String   @default("want")
+  runtime   String?
+  createdAt DateTime @default(now())
+}
+
+model TvShow {
+  id        Int      @id @default(autoincrement())
+  tmdbId    Int      @unique
+  title     String
+  year      String?
+  cover     String?
+  status    String   @default("want")
+  totalEps  Int      @default(0)
+  currentEp Int      @default(0)
+  createdAt DateTime @default(now())
+}
