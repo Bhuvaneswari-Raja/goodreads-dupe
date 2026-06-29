@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+/* global styles — paste into src/styles.css */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f5f5f4;
+  color: #1c1917;
+  min-height: 100vh;
+}
+button { font-family: inherit; }
+input { font-family: inherit; }
